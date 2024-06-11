@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 50px;
+}
+
+.container {
+    border: 2px solid red;
+    padding: 20px;
+    display: inline-block;
+}
+
+h1 {
+    color: red;
+}
+
+.warning {
+    color: yellow;
+    font-size: 1.2em;
+}
+
+.instructions {
+    margin-top: 20px;
+    font-size: 1em;
+}
+
+.decrypt-button, .give-up-button {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.decrypt-section {
+    margin-top: 20px;
+}
+
+.decrypt-section input {
+    padding: 10px;
+    font-size: 1em;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.decrypt-section button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.countdown {
+    color: red;
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+.loading {
+    display: none;
+    margin-top: 20px;
+}
+
+.loading img {
+    width: 50px;
+    height: 50px;
+}

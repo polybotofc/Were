@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ransomware Page</title>
+    <link rel="stylesheet" href="css.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            border: 2px solid red;
+            padding: 20px;
+            display: inline-block;
+        }
+        h1 {
+            color: red;
+        }
+        .warning {
+            color: yellow;
+            font-size: 1.2em;
+        }
+        .instructions {
+            margin-top: 20px;
+            font-size: 1em;
+        }
+        .decrypt-button, .give-up-button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+        .decrypt-section {
+            margin-top: 20px;
+        }
+        .decrypt-section input {
+            padding: 10px;
+            font-size: 1em;
+            width: 80%;
+            margin-bottom: 10px;
+        }
+        .decrypt-section button {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+        .countdown {
+            color: red;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        .loading {
+            display: none;
+            margin-top: 20px;
+        }
+        .loading img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>YOUR FILES HAVE BEEN ENCRYPTED!</h1>
+        <p class="warning">All your files have been encrypted with a strong encryption algorithm.</p>
+        <p class="instructions">To decrypt your files, you need to pay a ransom of 1 Bitcoin to the following address:</p>
+        <p class="instructions"><strong>1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</strong></p>
+        <p class="instructions">After payment, enter the decryption code below and click the button to decrypt your files.</p>
+        <div class="decrypt-section">
+            <input type="text" placeholder="Enter decryption code here">
+            <button class="decrypt-button">Decrypt Files</button>
+        </div>
+        <div class="countdown">
+            <p>Time remaining: <span id="countdown-timer"></span></p>
+        </div>
+        <button class="give-up-button" onclick="giveUp()">I give up</button>
+        <div class="loading" id="loading">
+            <p>Restarting...</p>
+            <img src="loading.gif" alt="Loading">
+        </div>
+    </div>
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date().getTime() + 24 * 60 * 60 * 1000;
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="countdown-timer"
+            document.getElementById("countdown-timer").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown-timer").innerHTML = "EXPIRED";
+                showRestarting();
+            }
+        }, 1000);
+
+        function giveUp() {
+            showRestarting();
+        }
+
+        function showRestarting() {
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById('loading').style.display = 'block';
+            setTimeout(function() {
+                document.body.innerHTML = '<h1>Data was not found and was deleted by ransomware</h1>';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
